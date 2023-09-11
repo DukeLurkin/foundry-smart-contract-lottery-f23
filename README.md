@@ -20,4 +20,4 @@ This code is to create a proveably random smart contract lottery.
 2. Write our tests
   1. Work on a local chain
   2. Forked Testnet
-  3. Forked Mainnet
+  3. Forked Mainnet# foundry-smart-contract-lottery-f23
