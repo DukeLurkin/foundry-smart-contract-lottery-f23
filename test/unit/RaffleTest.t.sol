@@ -154,6 +154,7 @@ contract RaffleTest is Test {
         uint256 numPlayers = 0;
         Raffle.RaffleState rState = raffle.getRaffleState();
         // Act / Assert
+        console.log(address(raffle).balance);
         vm.expectRevert(
           abi.encodeWithSelector(
             Raffle.Raffle__UpkeepNotNeeded.selector,

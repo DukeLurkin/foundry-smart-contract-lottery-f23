@@ -26,6 +26,7 @@ import {VRFCoordinatorV2Interface} from "@chainlink/contracts/src/v0.8/interface
 import {VRFConsumerBaseV2} from "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import {AutomationCompatible} from "@chainlink/contracts/src/v0.8/AutomationCompatible.sol";
 
+
 /**
  * @title A Sample Raffle Contract
  * @author Lukas Durkin
@@ -97,6 +98,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatible {
         if (s_raffleState != RaffleState.OPEN) {
             revert Raffle__RaffleNotOpen();
         }
+       
         s_players.push(payable(msg.sender));
         // 2 main reasons for Events
         // Makes migration easier
@@ -115,7 +117,12 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatible {
      */
     function checkUpkeep(
         bytes memory /*checkData*/
-    ) public view override returns (bool upkeepNeeded, bytes memory /*performData*/){
+    ) 
+        public 
+        view 
+        override 
+        returns (bool upkeepNeeded, bytes memory /*performData*/)
+    {
         // check to see if enough time has passed
         bool timeHasPassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
         bool isOpen = RaffleState.OPEN == s_raffleState;
